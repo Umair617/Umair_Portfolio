@@ -7,7 +7,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-white border-t border-neutral-100">
-      <div className="container mx-auto px-6 md:px-12 lg:px-20 py-8">
+      <div className=" mx-auto px-6 md:px-12 lg:px-20 py-8">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
 
           {/* Copyright */}
@@ -39,7 +39,7 @@ const Footer = () => {
       {/* Back to top */}
       <button
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        className="fixed bottom-6 right-6 w-10 h-10 bg-neutral-900 border border-neutral-700 rounded-full flex items-center justify-center text-white hover:bg-neutral-700 transition-all duration-300 z-40 cursor-pointer"
+        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 w-10 h-10 bg-neutral-900 border border-neutral-700 rounded-full flex items-center justify-center text-white hover:bg-neutral-700 transition-all duration-300 z-40 cursor-pointer"
         aria-label="Back to top"
       >
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

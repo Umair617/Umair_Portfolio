@@ -43,8 +43,8 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="py-16 md:py-28 bg-white border-t border-neutral-100">
-      <div className="container mx-auto px-6 md:px-12 lg:px-20">
+    <section id="skills" className="py-16 md:py-28 bg-white border-t border-neutral-100 overflow-hidden">
+      <div className=" mx-auto px-6 md:px-12 lg:px-20">
 
         {/* Section label */}
         <div className="flex items-center gap-3 mb-4">
@@ -55,18 +55,18 @@ const Skills = () => {
         <h2 className="text-2xl md:text-4xl font-bold text-neutral-900 mb-10 md:mb-16">Technical Skills</h2>
 
         {/* Skill categories — Swiper on mobile, grid on desktop */}
-        <div className="block sm:hidden">
+        <div className="block md:hidden">
           <Swiper
             modules={[Navigation]}
             onSwiper={(swiper) => { swiperRef.current = swiper; }}
             onSlideChange={(swiper) => setActiveIdx(swiper.activeIndex)}
             spaceBetween={16}
-            slidesPerView={1.15}
+            slidesPerView={1}
             className="!overflow-visible"
           >
             {categories.map((cat) => (
-              <SwiperSlide key={cat.title}>
-                <div className="group p-6 rounded-2xl border border-neutral-200 bg-neutral-50 hover:bg-white hover:border-neutral-300 hover:shadow-sm transition-all duration-300">
+              <SwiperSlide key={cat.title} className="!h-auto">
+                <div className="group p-6 rounded-2xl border border-neutral-200 bg-neutral-50 hover:bg-white hover:border-neutral-300 hover:shadow-sm transition-all duration-300 h-full">
                   <div className="flex items-center gap-3 mb-5">
                     <div className="w-9 h-9 rounded-lg bg-neutral-100 flex items-center justify-center text-neutral-500 group-hover:bg-neutral-900 group-hover:text-white transition-colors duration-300">
                       {cat.icon}
@@ -88,24 +88,42 @@ const Skills = () => {
               </SwiperSlide>
             ))}
           </Swiper>
-          {/* Slide indicators */}
-          <div className="flex items-center justify-center gap-2 mt-6">
-            {categories.map((_, i) => (
+          {/* Navigation */}
+          <div className="flex items-center justify-between mt-6">
+            <div className="flex items-center gap-2">
+              {categories.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => swiperRef.current?.slideTo(i)}
+                  className={`h-1.5 rounded-full transition-all duration-300 ${activeIdx === i ? 'w-5 bg-neutral-900' : 'w-1.5 bg-neutral-300'}`}
+                  aria-label={`Go to slide ${i + 1}`}
+                />
+              ))}
+            </div>
+            <div className="flex gap-2">
               <button
-                key={i}
-                onClick={() => swiperRef.current?.slideTo(i)}
-                className={`h-1.5 rounded-full transition-all duration-300 ${activeIdx === i ? 'w-5 bg-neutral-900' : 'w-1.5 bg-neutral-300'}`}
-                aria-label={`Go to slide ${i + 1}`}
-              />
-            ))}
+                onClick={() => swiperRef.current?.slidePrev()}
+                className="w-9 h-9 rounded-full border border-neutral-200 flex items-center justify-center text-neutral-400 hover:border-neutral-900 hover:text-neutral-900 transition-colors"
+                aria-label="Previous"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+              </button>
+              <button
+                onClick={() => swiperRef.current?.slideNext()}
+                className="w-9 h-9 rounded-full border border-neutral-200 flex items-center justify-center text-neutral-400 hover:border-neutral-900 hover:text-neutral-900 transition-colors"
+                aria-label="Next"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+              </button>
+            </div>
           </div>
         </div>
 
-        <div className="hidden sm:grid grid-cols-2 gap-6">
+        <div className="hidden md:grid grid-cols-2 gap-6">
           {categories.map((cat) => (
             <div
               key={cat.title}
-              className="group p-6 rounded-2xl border border-neutral-200 bg-neutral-50 hover:bg-white hover:border-neutral-300 hover:shadow-sm transition-all duration-300"
+              className="group p-6 rounded-2xl border border-neutral-200 bg-neutral-50 hover:bg-white hover:border-neutral-300 hover:shadow-sm transition-all duration-300 h-full"
             >
               <div className="flex items-center gap-3 mb-5">
                 <div className="w-9 h-9 rounded-lg bg-neutral-100 flex items-center justify-center text-neutral-500 group-hover:bg-neutral-900 group-hover:text-white transition-colors duration-300">

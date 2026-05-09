@@ -35,7 +35,7 @@ const ContactForm = () => {
 
   return (
     <section id="contact" className="py-24 bg-neutral-50 border-t border-neutral-100">
-      <div className="container mx-auto px-6 md:px-12 lg:px-20">
+      <div className=" mx-auto px-6 md:px-12 lg:px-20">
 
         {/* Header */}
         <div className="mb-16">

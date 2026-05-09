@@ -33,13 +33,13 @@ const HeroBanner = () => {
 
   return (
     <section className="relative min-h-screen bg-white overflow-hidden">
-      <div className="container mx-auto px-6 md:px-12 lg:px-20 min-h-screen flex items-center">
-        <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-8 lg:gap-8 w-full py-20 lg:py-0">
+      <div className=" mx-auto px-6 md:px-12 lg:px-20 min-h-screen flex items-center">
+        <div className=" grid grid-cols-1 lg:grid-cols-2 items-center gap-8 lg:gap-8 w-full py-10 sm:py-14 md:py-16 lg:py-0">
 
           {/* Left — text content */}
           <div className="space-y-6 max-w-xl z-10 order-last lg:order-first">
             {/* Name */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-neutral-900 leading-[0.95] tracking-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black text-neutral-900 leading-[0.95] tracking-tight">
               Muhammad<br />Umair Mumtaz
             </h1>
 
@@ -123,14 +123,14 @@ const HeroBanner = () => {
           {/* Right — profile image */}
           <div className="relative flex justify-center lg:justify-end items-center order-first lg:order-last">
             <div className="relative">
-              <div className="w-[320px] sm:w-[360px] md:w-[400px] lg:w-[440px] aspect-square rounded-full bg-neutral-200 overflow-hidden">
+              <div className="w-[280px] sm:w-[300px] md:w-[360px] lg:w-[440px] aspect-square rounded-full bg-neutral-200 overflow-hidden">
                 <Image
                   src="/-profile.png"
                   alt="Muhammad Umair Mumtaz"
                   width={500}
                   height={500}
                   priority
-                  className="w-full h-full object-cover scale-150 translate-y-36"
+                  className="w-full h-full object-cover scale-[1.35] translate-y-24 sm:scale-[1.4] sm:translate-y-28 md:scale-150 md:translate-y-36"
                 />
               </div>
               {/* Floating badge */}

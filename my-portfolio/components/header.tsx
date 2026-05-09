@@ -19,6 +19,15 @@ const Header = () => {
     return () => { document.body.style.overflow = ''; };
   }, [isMenuOpen]);
 
+  // Auto-close drawer on resize past md breakpoint
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) setIsMenuOpen(false);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const navItems = [
     { name: "About", href: "#about" },
     { name: "Skills", href: "#skills" },
@@ -39,7 +48,7 @@ const Header = () => {
           ? 'bg-white/95 backdrop-blur-md border-b border-neutral-200'
           : 'bg-transparent'
       }`}>
-        <div className="container mx-auto px-6 md:px-12 lg:px-20">
+        <div className=" mx-auto px-6 md:px-12 lg:px-20">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
             <button

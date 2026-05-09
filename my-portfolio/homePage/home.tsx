@@ -52,7 +52,7 @@ const Experience = () => {
   ];
 
   return (
-    <section id="projects" className="py-16 md:py-28 bg-neutral-50 border-t border-neutral-100">
+    <section id="projects" className="py-16 md:py-28 bg-neutral-50 border-t border-neutral-100 overflow-hidden">
       <div className="container mx-auto px-6 md:px-12 lg:px-20">
 
         {/* Section label */}
@@ -190,7 +190,7 @@ const Education = () => {
   ];
 
   return (
-    <section id="education" className="py-16 md:py-28 bg-white border-t border-neutral-100">
+    <section id="education" className="py-16 md:py-28 bg-white border-t border-neutral-100 overflow-hidden">
       <div className="container mx-auto px-6 md:px-12 lg:px-20">
 
         {/* Section label */}
@@ -303,7 +303,7 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-16 md:py-28 bg-neutral-50 border-t border-neutral-100">
+    <section id="contact" className="py-16 md:py-28 bg-neutral-50 border-t border-neutral-100 overflow-hidden">
       <div className="container mx-auto px-6 md:px-12 lg:px-20">
 
         {/* Section label */}
@@ -328,7 +328,7 @@ const Contact = () => {
               className="group p-6 rounded-2xl border border-neutral-200 bg-white hover:border-neutral-300 hover:shadow-sm transition-all duration-300"
             >
               <p className="text-[10px] text-neutral-400 uppercase tracking-[0.2em] mb-2">{label}</p>
-              <p className="text-sm text-neutral-600 group-hover:text-neutral-900 transition-colors">{value}</p>
+              <p className="text-sm text-neutral-600 group-hover:text-neutral-900 transition-colors break-all">{value}</p>
             </a>
           ))}
         </div>

@@ -17,7 +17,7 @@ export default function Circle() {
 
   return (
     <div className="flex justify-center items-center   ">
-      {/* Container with perspective */}
+      {/*  with perspective */}
       <div className="relative w-[320px] h-[320px] ">
         {/* Rotating element with preserve-3d */}
         <div className="absolute w-full h-full animate-rotate3d preserve-3d">
