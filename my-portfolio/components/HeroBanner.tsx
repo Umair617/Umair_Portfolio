@@ -104,7 +104,7 @@ const HeroBanner = () => {
             {/* Social links */}
             <div className="flex items-center gap-5 pt-4">
               {[
-                { label: "GitHub", href: "https://github.com/umairmumtaz" },
+                { label: "GitHub", href: "https://github.com/Umair617" },
                 { label: "LinkedIn", href: "https://www.linkedin.com/in/umair-mumtaz-dev" },
               ].map(({ label, href }) => (
                 <a

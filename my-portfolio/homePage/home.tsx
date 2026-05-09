@@ -297,8 +297,8 @@ const Contact = () => {
     },
     {
       label: "GITHUB",
-      value: "github.com/umairmumtaz",
-      href: "https://github.com/umairmumtaz",
+      value: "github.com/Umair617",
+      href: "https://github.com/Umair617",
     },
   ];
 
