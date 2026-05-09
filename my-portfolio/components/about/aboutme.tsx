@@ -1,7 +1,16 @@
-import React from "react";
+"use client";
+
+import React, { useRef, useState } from "react";
 import { Badge } from "@/components/ui/badge";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import type { Swiper as SwiperType } from "swiper";
+// @ts-ignore
+import "swiper/css";
 
 const Aboutme = () => {
+  const swiperRef = useRef<SwiperType | null>(null);
+  const [activeIdx, setActiveIdx] = useState(0);
   const stats = [
     { number: "5+", label: "Projects" },
     { number: "1+", label: "Years Exp." },
@@ -85,8 +94,42 @@ const Aboutme = () => {
           <span className="text-[10px] text-neutral-400 tracking-[0.25em] uppercase">Expertise</span>
         </div>
 
-        {/* Services grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {/* Services — Swiper on mobile, grid on desktop */}
+        <div className="block sm:hidden">
+          <Swiper
+            modules={[Navigation]}
+            onSwiper={(swiper) => { swiperRef.current = swiper; }}
+            onSlideChange={(swiper) => setActiveIdx(swiper.activeIndex)}
+            spaceBetween={16}
+            slidesPerView={1.15}
+            className="!overflow-visible"
+          >
+            {services.map((svc) => (
+              <SwiperSlide key={svc.title}>
+                <div className="group p-6 rounded-2xl border border-neutral-200 bg-white hover:border-neutral-300 hover:shadow-sm transition-all duration-300">
+                  <div className="w-11 h-11 rounded-xl bg-neutral-100 flex items-center justify-center text-neutral-500 group-hover:bg-neutral-900 group-hover:text-white transition-colors duration-300 mb-5">
+                    {svc.icon}
+                  </div>
+                  <h3 className="text-sm font-semibold text-neutral-900 mb-2">{svc.title}</h3>
+                  <p className="text-xs text-neutral-500 leading-relaxed">{svc.desc}</p>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          {/* Slide indicators */}
+          <div className="flex items-center justify-center gap-2 mt-6">
+            {services.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => swiperRef.current?.slideTo(i)}
+                className={`h-1.5 rounded-full transition-all duration-300 ${activeIdx === i ? 'w-5 bg-neutral-900' : 'w-1.5 bg-neutral-300'}`}
+                aria-label={`Go to slide ${i + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+
+        <div className="hidden sm:grid grid-cols-2 gap-6">
           {services.map((svc) => (
             <div
               key={svc.title}

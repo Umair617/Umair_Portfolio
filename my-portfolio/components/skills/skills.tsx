@@ -1,9 +1,16 @@
 "use client";
 
-import React from "react";
+import React, { useRef, useState } from "react";
 import { Badge } from "@/components/ui/badge";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import type { Swiper as SwiperType } from "swiper";
+// @ts-ignore
+import "swiper/css";
 
 const Skills = () => {
+  const swiperRef = useRef<SwiperType | null>(null);
+  const [activeIdx, setActiveIdx] = useState(0);
   const categories = [
     {
       title: "Languages",
@@ -47,22 +54,65 @@ const Skills = () => {
 
         <h2 className="text-2xl md:text-4xl font-bold text-neutral-900 mb-10 md:mb-16">Technical Skills</h2>
 
-        {/* Skill categories as cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {/* Skill categories — Swiper on mobile, grid on desktop */}
+        <div className="block sm:hidden">
+          <Swiper
+            modules={[Navigation]}
+            onSwiper={(swiper) => { swiperRef.current = swiper; }}
+            onSlideChange={(swiper) => setActiveIdx(swiper.activeIndex)}
+            spaceBetween={16}
+            slidesPerView={1.15}
+            className="!overflow-visible"
+          >
+            {categories.map((cat) => (
+              <SwiperSlide key={cat.title}>
+                <div className="group p-6 rounded-2xl border border-neutral-200 bg-neutral-50 hover:bg-white hover:border-neutral-300 hover:shadow-sm transition-all duration-300">
+                  <div className="flex items-center gap-3 mb-5">
+                    <div className="w-9 h-9 rounded-lg bg-neutral-100 flex items-center justify-center text-neutral-500 group-hover:bg-neutral-900 group-hover:text-white transition-colors duration-300">
+                      {cat.icon}
+                    </div>
+                    <h3 className="text-sm font-semibold text-neutral-900">{cat.title}</h3>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {cat.skills.map((skill) => (
+                      <Badge
+                        key={skill}
+                        variant="outline"
+                        className="border-neutral-200 text-neutral-500 bg-white text-xs hover:border-neutral-400 hover:text-neutral-900 transition-colors rounded-full px-3.5 py-1"
+                      >
+                        {skill}
+                      </Badge>
+                    ))}
+                  </div>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          {/* Slide indicators */}
+          <div className="flex items-center justify-center gap-2 mt-6">
+            {categories.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => swiperRef.current?.slideTo(i)}
+                className={`h-1.5 rounded-full transition-all duration-300 ${activeIdx === i ? 'w-5 bg-neutral-900' : 'w-1.5 bg-neutral-300'}`}
+                aria-label={`Go to slide ${i + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+
+        <div className="hidden sm:grid grid-cols-2 gap-6">
           {categories.map((cat) => (
             <div
               key={cat.title}
               className="group p-6 rounded-2xl border border-neutral-200 bg-neutral-50 hover:bg-white hover:border-neutral-300 hover:shadow-sm transition-all duration-300"
             >
-              {/* Category header */}
               <div className="flex items-center gap-3 mb-5">
                 <div className="w-9 h-9 rounded-lg bg-neutral-100 flex items-center justify-center text-neutral-500 group-hover:bg-neutral-900 group-hover:text-white transition-colors duration-300">
                   {cat.icon}
                 </div>
                 <h3 className="text-sm font-semibold text-neutral-900">{cat.title}</h3>
               </div>
-
-              {/* Skill badges */}
               <div className="flex flex-wrap gap-2">
                 {cat.skills.map((skill) => (
                   <Badge
