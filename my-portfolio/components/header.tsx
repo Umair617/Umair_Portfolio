@@ -1,150 +1,158 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
+import { Button } from '@/components/ui/button';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // Handle scroll effect
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Lock body scroll when drawer is open
+  useEffect(() => {
+    document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [isMenuOpen]);
+
   const navItems = [
-    { name: "Home", href: "#home" },
     { name: "About", href: "#about" },
     { name: "Skills", href: "#skills" },
-    { name: "Projects", href: "#projects" },
+    { name: "Experience", href: "#projects" },
+    { name: "Education", href: "#education" },
     { name: "Contact", href: "#contact" },
   ];
 
   const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
     setIsMenuOpen(false);
   };
 
   return (
-    <header className={`fixed w-full top-0 z-50 transition-all duration-300 ${
-      isScrolled 
-        ? 'bg-white/90 dark:bg-slate-900/90 backdrop-blur-md shadow-lg border-b border-gray-200/50 dark:border-slate-700/50' 
-        : 'bg-transparent'
-    }`}>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center py-4">
-          {/* Logo */}
-          <div className="flex items-center">
-            <div className="relative group">
-              <img
-                src="Next.svg"
-                alt="Logo"
-                className="h-12 w-12 sm:h-14 sm:w-14 transition-all duration-300 group-hover:scale-110"
-              />
-              {/* Logo glow effect */}
-              <div className="absolute inset-0 bg-blue-500 rounded-full opacity-0 group-hover:opacity-20 blur-md transition-opacity duration-300 -z-10"></div>
-            </div>
-            <span className={`ml-3 text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent transition-all duration-300 ${
-              isScrolled ? 'opacity-100' : 'opacity-0 sm:opacity-100'
-            }`}>
-              Umair
-            </span>
-          </div>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-1">
-            {navItems.map((item, index) => (
-              <button
-                key={item.name}
-                onClick={() => scrollToSection(item.href)}
-                className="relative px-4 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors duration-300 group"
-              >
-                {item.name}
-                {/* Hover underline animation */}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 group-hover:w-full transition-all duration-300"></span>
-              </button>
-            ))}
-            
-            {/* CTA Button */}
-            <button 
-              onClick={() => scrollToSection('#contact')}
-              className="ml-4 px-6 py-2 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white rounded-full font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
-            >
-              Hire Me
-            </button>
-          </nav>
-
-          {/* Mobile Menu Button */}
-          <div className="flex md:hidden items-center space-x-4">
-            <button 
-              onClick={() => scrollToSection('#contact')}
-              className="px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full text-sm font-semibold shadow-lg"
-            >
-              Hire Me
-            </button>
-            
+    <>
+      <header className={`fixed w-full top-0 z-50 transition-all duration-500 ${
+        isScrolled
+          ? 'bg-white/95 backdrop-blur-md border-b border-neutral-200'
+          : 'bg-transparent'
+      }`}>
+        <div className="container mx-auto px-6 md:px-12 lg:px-20">
+          <div className="flex justify-between items-center h-16">
+            {/* Logo */}
             <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="p-2 rounded-lg bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-gray-200/50 dark:border-slate-700/50 shadow-sm"
-              aria-label="Toggle menu"
+              onClick={() => scrollToSection('#home')}
+              className="text-neutral-900 font-black text-xl tracking-tight hover:text-neutral-500 transition-colors"
             >
-              <div className="w-6 h-6 flex flex-col justify-center items-center">
-                <span className={`block h-0.5 w-6 bg-gray-700 dark:bg-gray-300 transition-all duration-300 ${
-                  isMenuOpen ? 'rotate-45 translate-y-1.5' : '-translate-y-1'
-                }`}></span>
-                <span className={`block h-0.5 w-6 bg-gray-700 dark:bg-gray-300 transition-all duration-300 ${
-                  isMenuOpen ? 'opacity-0' : 'opacity-100'
-                }`}></span>
-                <span className={`block h-0.5 w-6 bg-gray-700 dark:bg-gray-300 transition-all duration-300 ${
-                  isMenuOpen ? '-rotate-45 -translate-y-1.5' : 'translate-y-1'
-                }`}></span>
-              </div>
+              UM<span className="text-neutral-300">.</span>
             </button>
-          </div>
-        </div>
 
-        {/* Mobile Navigation Menu */}
-        <div className={`md:hidden transition-all duration-300 overflow-hidden z-50 ${
-          isMenuOpen ? 'max-h-full opacity-100 z-50' : 'max-h-0 opacity-0'
-        }`}>
-          <nav className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-lg rounded-2xl border border-gray-200/50 dark:border-slate-700/50 shadow-xl p-6 mb-4 z-50 h-svh">
-            <div className="flex flex-col space-y-4 z-50">
+            {/* Desktop Nav */}
+            <nav className="hidden md:flex items-center gap-8">
               {navItems.map((item) => (
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
-                  className="text-left px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium rounded-lg hover:bg-gray-50 dark:hover:bg-slate-700/50 transition-all duration-300 transform hover:translate-x-2"
+                  className="text-xs text-neutral-400 hover:text-neutral-900 transition-colors duration-300 tracking-widest uppercase"
                 >
                   {item.name}
                 </button>
               ))}
-              
-              {/* Mobile additional CTA */}
-              <button 
-                onClick={() => scrollToSection('#contact')}
-                className="mt-4 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white rounded-xl font-semibold shadow-lg text-center transform hover:scale-105 transition-all duration-300"
+              <a
+                href="https://www.linkedin.com/in/umairmumtaz-dev"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                Start a Project
-              </button>
-            </div>
-          </nav>
-        </div>
-      </div>
+                <Button
+                  className="ml-4 bg-neutral-900 text-white hover:bg-neutral-700 rounded-full px-6 h-8 text-xs font-semibold tracking-wide cursor-pointer"
+                >
+                  Hire Me
+                </Button>
+              </a>
+            </nav>
 
-      {/* Background overlay for mobile menu */}
-      {isMenuOpen && (
-        <div 
-          className=""
-          onClick={() => setIsMenuOpen(false)}
-        ></div>
-      )}
-    </header>
+            {/* Mobile toggle */}
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="md:hidden text-neutral-500 hover:text-neutral-900 transition-colors p-2"
+              aria-label="Toggle menu"
+            >
+              <div className="flex flex-col gap-1.5 w-6">
+                <span className={`block h-0.5 bg-current transition-all duration-300 origin-center ${
+                  isMenuOpen ? 'rotate-45 translate-y-2' : ''
+                }`} />
+                <span className={`block h-0.5 bg-current transition-all duration-300 ${
+                  isMenuOpen ? 'opacity-0' : ''
+                }`} />
+                <span className={`block h-0.5 bg-current transition-all duration-300 origin-center ${
+                  isMenuOpen ? '-rotate-45 -translate-y-2' : ''
+                }`} />
+              </div>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {/* Mobile drawer overlay */}
+      <div
+        className={`fixed inset-0 z-40 bg-black/40 transition-opacity duration-300 md:hidden ${
+          isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
+        }`}
+        onClick={() => setIsMenuOpen(false)}
+      />
+
+      {/* Mobile slide-in drawer */}
+      <nav
+        className={`fixed top-0 left-0 z-50 h-full w-72 bg-white shadow-xl transition-transform duration-300 ease-in-out md:hidden ${
+          isMenuOpen ? 'translate-x-0' : '-translate-x-full'
+        }`}
+      >
+        {/* Drawer header */}
+        <div className="flex items-center justify-between px-6 h-16 border-b border-neutral-100">
+          <span className="text-neutral-900 font-black text-xl tracking-tight">
+            UM<span className="text-neutral-300">.</span>
+          </span>
+          <button
+            onClick={() => setIsMenuOpen(false)}
+            className="text-neutral-400 hover:text-neutral-900 transition-colors p-1"
+            aria-label="Close menu"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+          </button>
+        </div>
+
+        {/* Drawer nav items */}
+        <div className="flex flex-col gap-1 px-4 py-6">
+          {navItems.map((item) => (
+            <button
+              key={item.name}
+              onClick={() => scrollToSection(item.href)}
+              className="text-left text-sm text-neutral-500 hover:text-neutral-900 hover:bg-neutral-50 transition-colors tracking-widest uppercase px-3 py-3 rounded-lg"
+            >
+              {item.name}
+            </button>
+          ))}
+        </div>
+
+        {/* Drawer footer */}
+        <div className="px-6 mt-auto absolute bottom-8 left-0 right-0">
+          <a
+            href="https://www.linkedin.com/in/umairmumtaz-dev"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block"
+          >
+            <Button
+              className="w-full bg-neutral-900 text-white hover:bg-neutral-700 rounded-full text-sm h-11 font-semibold cursor-pointer"
+            >
+              Hire Me
+            </Button>
+          </a>
+        </div>
+      </nav>
+    </>
   );
 };
 

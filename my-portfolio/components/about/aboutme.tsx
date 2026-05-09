@@ -1,156 +1,104 @@
 import React from "react";
-import Image from "next/image";
+import { Badge } from "@/components/ui/badge";
 
 const Aboutme = () => {
-  const aboutData = {
-    image: "/-profile.png", 
-    title: "About Me",
-    description: `
-      I'm Umair Mumtaz, a passionate Full Stack Developer specializing in 
-      React.js and Next.js. I love creating elegant, efficient, and responsive 
-      web applications that provide exceptional user experiences. 
-      Over the years, I've worked on a variety of projects — from small business 
-      websites to enterprise-level applications — and I continue to learn and 
-      evolve with every new challenge.
-    `,
-    highlights: [
-      "1+ years of experience in full-stack development",
-      "Strong expertise in React.js, Next.js, and Node.js",
-      "Dedicated to writing clean, maintainable code",
-      "Focused on performance, accessibility, and responsive design",
-    ],
-    stats: [
-      { number: "5+", label: "Projects Completed" },
-      { number: "1+", label: "Years Experience" },
-      { number: "99%", label: "Client Satisfaction" },
-    ],
-  };
+  const stats = [
+    { number: "5+", label: "Projects" },
+    { number: "1+", label: "Years Exp." },
+    { number: "2", label: "Companies" },
+  ];
+
+  const services = [
+    {
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m10 8 4 4-4 4"/></svg>
+      ),
+      title: "Web Development",
+      desc: "Scalable, production-ready web applications with modern frameworks and best practices.",
+    },
+    {
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg>
+      ),
+      title: "Responsive Design",
+      desc: "Pixel-perfect, mobile-first interfaces that look great across every screen and device.",
+    },
+    {
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
+      ),
+      title: "API Integration",
+      desc: "RESTful API design and integration with secure, efficient data flow between services.",
+    },
+    {
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
+      ),
+      title: "Backend Development",
+      desc: "Scalable server-side solutions with Node.js, Express.js, Redis caching, and robust database integrations.",
+    },
+    {
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>
+      ),
+      title: "SaaS Tools & RBAC",
+      desc: "Multi-tenant SaaS applications with subscription management, role-based access control, and Redis caching.",
+    },
+  ];
 
   return (
-    <section className="aboutme min-h-screen w-full bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800 relative overflow-hidden">
-      {/* Background decorative elements - Same as HeroBanner */}
-      <div className="absolute top-0 left-0 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
-      <div className="absolute top-0 right-0 w-72 h-72 bg-yellow-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
-      <div className="absolute -bottom-8 left-20 w-72 h-72 bg-pink-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
-      
-      <div className="container mx-auto px-4 py-16 md:px-8 md:py-24 relative z-10">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            {aboutData.title}
+    <section id="about" className="py-16 md:py-28 bg-neutral-50 border-t border-neutral-100">
+      <div className="container mx-auto px-6 md:px-12 lg:px-20">
+
+        {/* Section label */}
+        <div className="flex items-center gap-3 mb-4">
+          <div className="w-8 h-px bg-neutral-300" />
+          <span className="text-[10px] text-neutral-400 tracking-[0.25em] uppercase">About Me</span>
+        </div>
+
+        {/* Heading + bio */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 mb-12 md:mb-20">
+          <h2 className="text-2xl md:text-4xl font-bold text-neutral-900 leading-tight">
+            Software Engineer &<br />Full Stack Developer
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full"></div>
-        </div>
-
-        {/* Main Content */}
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
-          {/* Image Section */}
-          <div className="w-full lg:w-2/5 flex justify-center">
-            <div className="relative group">
-              {/* Gradient Border Container */}
-              <div className="p-2 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full shadow-2xl">
-                {/* Main Image Container */}
-                <div className="relative bg-white dark:bg-slate-800 rounded-full p-2">
-                  <Image
-                    src={aboutData.image}
-                    alt="Umair Mumtaz - Full Stack Developer"
-                    width={400}
-                    height={400}
-                    className="rounded-2xl object-cover w-full h-auto  scale-105 group-hover:scale-105 transition-transform duration-500"
-                    onError={(e) => {
-                      // Fallback if image doesn't load
-                      const target = e.target as HTMLImageElement;
-                      target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23f3f4f6'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='18' fill='%236b7280'%3EProfile Image%3C/text%3E%3C/svg%3E";
-                    }}
-                  />
-                </div>
-              </div>
-              
-              {/* Floating background elements */}
-              <div className="absolute -inset-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full opacity-20 group-hover:opacity-30 blur-lg transition-all duration-500 -z-10"></div>
-              
-              {/* Decorative border animation */}
-              <div className="absolute -inset-2 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full opacity-0 group-hover:opacity-100 blur-md transition-all duration-500 -z-20"></div>
-            </div>
-          </div>
-
-          {/* Text Content */}
-          <div className="w-full lg:w-3/5 space-y-8">
-            {/* Description */}
-            <div className="space-y-6">
-              <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
-                {aboutData.description}
-              </p>
-            </div>
-
-            {/* Highlights */}
-            <div className="space-y-4">
-              <h4 className="text-2xl font-semibold text-gray-900 dark:text-white">
-                What I Bring
-              </h4>
-              <div className="grid gap-3">
-                {aboutData.highlights.map((item, index) => (
-                  <div 
-                    key={index}
-                    className="flex items-center gap-4 p-4 bg-white dark:bg-slate-800 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100 dark:border-slate-700 group hover:translate-x-2"
-                  >
-                    <div className="flex-shrink-0 w-3 h-3 bg-gradient-to-r from-orange-400 to-orange-600 rounded-full"></div>
-                    <span className="text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white transition-colors">
-                      {item}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-6 pt-6">
-              {aboutData.stats.map((stat, index) => (
-                <div 
-                  key={index}
-                  className="text-center p-6 bg-white dark:bg-slate-800 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 dark:border-slate-700 group hover:scale-105"
-                >
-                  <div className="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
-                    {stat.number}
-                  </div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400 mt-2">
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Call to Action */}
-            <div className="pt-6">
-              <button className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
-                <span>Let's Work Together</span>
-                <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
-              </button>
-            </div>
+          <div className="flex flex-col justify-center">
+            <p className="text-neutral-600 text-base md:text-lg leading-relaxed">
+              I&apos;m a Full Stack Developer from Pakistan specializing in building modern web
+              applications with React, Next.js, TypeScript, and Node.js. Currently an Associate Software Engineer at <span className="text-neutral-900 font-medium">LogicWise.co</span>. I hold a BS in Software Engineering from <span className="text-neutral-900 font-medium">University Of Central Punjab</span>.
+            </p>
           </div>
         </div>
 
-        {/* Skills Badges - Optional additional section */}
-        <div className="mt-20 text-center">
-          <h4 className="text-2xl font-semibold text-gray-900 dark:text-white mb-8">
-            Technologies I Work With
-          </h4>
-          <div className="flex flex-wrap justify-center gap-4">
-            {[
-              "React.js", "Next.js", "TypeScript", "Node.js", 
-              "Tailwind CSS", "MongoDB", "PostgreSQL", "AWS"
-            ].map((tech, index) => (
-              <span 
-                key={tech}
-                className="px-6 py-3 bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-full text-gray-700 dark:text-gray-300 shadow-sm hover:shadow-md hover:border-blue-300 dark:hover:border-blue-600 transition-all duration-300 hover:-translate-y-1"
-                style={{
-                  animationDelay: `${index * 100}ms`
-                }}
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
+        {/* Stats */}
+        <div className="flex flex-wrap gap-8 sm:gap-12 mb-12 md:mb-20 pb-10 border-b border-neutral-200">
+          {stats.map(({ number, label }) => (
+            <div key={label}>
+              <p className="text-3xl md:text-4xl font-bold text-neutral-900">{number}</p>
+              <p className="text-[10px] text-neutral-500 uppercase tracking-[0.2em] mt-1">{label}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Expertise label */}
+        <div className="flex items-center gap-3 mb-10">
+          <div className="w-8 h-px bg-neutral-300" />
+          <span className="text-[10px] text-neutral-400 tracking-[0.25em] uppercase">Expertise</span>
+        </div>
+
+        {/* Services grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {services.map((svc) => (
+            <div
+              key={svc.title}
+              className="group p-6 rounded-2xl border border-neutral-200 bg-white hover:border-neutral-300 hover:shadow-sm transition-all duration-300"
+            >
+              <div className="w-11 h-11 rounded-xl bg-neutral-100 flex items-center justify-center text-neutral-500 group-hover:bg-neutral-900 group-hover:text-white transition-colors duration-300 mb-5">
+                {svc.icon}
+              </div>
+              <h3 className="text-sm font-semibold text-neutral-900 mb-2">{svc.title}</h3>
+              <p className="text-xs text-neutral-500 leading-relaxed">{svc.desc}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
