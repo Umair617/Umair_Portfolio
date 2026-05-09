@@ -105,7 +105,7 @@ const HeroBanner = () => {
             <div className="flex items-center gap-5 pt-4">
               {[
                 { label: "GitHub", href: "https://github.com/umairmumtaz" },
-                { label: "LinkedIn", href: "https://www.linkedin.com/in/umairmumtaz-dev" },
+                { label: "LinkedIn", href: "https://www.linkedin.com/in/umair-mumtaz-dev" },
               ].map(({ label, href }) => (
                 <a
                   key={label}

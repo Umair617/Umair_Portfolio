@@ -19,7 +19,7 @@ const Footer = () => {
           <div className="flex gap-6">
             {[
               { label: 'GitHub', href: 'https://github.com/umairmumtaz' },
-              { label: 'LinkedIn', href: 'https://www.linkedin.com/in/umairmumtaz-dev' },
+              { label: 'LinkedIn', href: 'https://www.linkedin.com/in/umair-mumtaz-dev' },
               { label: 'Email', href: 'mailto:umumtaz617@gmail.com' },
             ].map(({ label, href }) => (
               <a

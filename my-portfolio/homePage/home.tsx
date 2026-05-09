@@ -292,8 +292,8 @@ const Contact = () => {
     },
     {
       label: "LINKEDIN",
-      value: "linkedin.com/in/umairmumtaz-dev",
-      href: "https://www.linkedin.com/in/umairmumtaz-dev",
+      value: "linkedin.com/in/umair-mumtaz-dev",
+      href: "https://www.linkedin.com/in/umair-mumtaz-dev",
     },
     {
       label: "GITHUB",

@@ -61,7 +61,7 @@ const Header = () => {
                 </button>
               ))}
               <a
-                href="https://www.linkedin.com/in/umairmumtaz-dev"
+                href="https://www.linkedin.com/in/umair-mumtaz-dev"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -139,7 +139,7 @@ const Header = () => {
         {/* Drawer footer */}
         <div className="px-6 mt-auto absolute bottom-8 left-0 right-0">
           <a
-            href="https://www.linkedin.com/in/umairmumtaz-dev"
+            href="https://www.linkedin.com/in/umair-mumtaz-dev"
             target="_blank"
             rel="noopener noreferrer"
             className="block"
