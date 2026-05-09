@@ -53,7 +53,7 @@ const Experience = () => {
 
   return (
     <section id="projects" className="py-16 md:py-28 bg-neutral-50 border-t border-neutral-100 overflow-hidden">
-      <div className="container mx-auto px-6 md:px-12 lg:px-20">
+      <div className="container mx-auto  md:px-12">
 
         {/* Section label */}
         <div className="flex items-center gap-3 mb-4">
@@ -191,7 +191,7 @@ const Education = () => {
 
   return (
     <section id="education" className="py-16 md:py-28 bg-white border-t border-neutral-100 overflow-hidden">
-      <div className="container mx-auto px-6 md:px-12 lg:px-20">
+      <div className="container mx-auto  md:px-12">
 
         {/* Section label */}
         <div className="flex items-center gap-3 mb-4">
@@ -304,7 +304,7 @@ const Contact = () => {
 
   return (
     <section id="contact" className="py-16 md:py-28 bg-neutral-50 border-t border-neutral-100 overflow-hidden">
-      <div className="container mx-auto px-6 md:px-12 lg:px-20">
+      <div className="container mx-auto  md:px-12">
 
         {/* Section label */}
         <div className="flex items-center gap-3 mb-4">
