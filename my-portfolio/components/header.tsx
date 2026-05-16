@@ -48,7 +48,7 @@ const Header = () => {
           ? 'bg-white/95 backdrop-blur-md border-b border-neutral-200'
           : 'bg-transparent'
       }`}>
-        <div className=" mx-auto px-6 md:px-12 lg:px-20">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
             <button
@@ -85,18 +85,18 @@ const Header = () => {
             {/* Mobile toggle */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden text-neutral-500 hover:text-neutral-900 transition-colors p-2"
+              className="md:hidden relative w-10 h-10 flex items-center justify-center rounded-full border border-neutral-200 hover:border-neutral-400 hover:bg-neutral-50 transition-all duration-300"
               aria-label="Toggle menu"
             >
-              <div className="flex flex-col gap-1.5 w-6">
-                <span className={`block h-0.5 bg-current transition-all duration-300 origin-center ${
-                  isMenuOpen ? 'rotate-45 translate-y-2' : ''
+              <div className="w-[18px] h-[14px] relative">
+                <span className={`absolute left-0 w-full h-[1.5px] bg-neutral-800 rounded-full transition-all duration-300 ease-in-out ${
+                  isMenuOpen ? 'top-1/2 -translate-y-1/2 rotate-45' : 'top-0'
                 }`} />
-                <span className={`block h-0.5 bg-current transition-all duration-300 ${
-                  isMenuOpen ? 'opacity-0' : ''
+                <span className={`absolute left-0 top-1/2 -translate-y-1/2 h-[1.5px] bg-neutral-800 rounded-full transition-all duration-300 ease-in-out ${
+                  isMenuOpen ? 'w-0 opacity-0' : 'w-3/4'
                 }`} />
-                <span className={`block h-0.5 bg-current transition-all duration-300 origin-center ${
-                  isMenuOpen ? '-rotate-45 -translate-y-2' : ''
+                <span className={`absolute left-0 w-full h-[1.5px] bg-neutral-800 rounded-full transition-all duration-300 ease-in-out ${
+                  isMenuOpen ? 'top-1/2 -translate-y-1/2 -rotate-45' : 'bottom-0 top-auto'
                 }`} />
               </div>
             </button>

@@ -53,7 +53,7 @@ const Experience = () => {
 
   return (
     <section id="projects" className="py-16 md:py-28 bg-neutral-50 border-t border-neutral-100 overflow-hidden">
-      <div className="container mx-auto  md:px-12">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
 
         {/* Section label */}
         <div className="flex items-center gap-3 mb-4">
@@ -107,7 +107,7 @@ const Experience = () => {
                 <div className="h-px bg-neutral-100 mb-6" />
 
                 {/* Bullets */}
-                <ul className="space-y-3 max-h-48 overflow-y-auto">
+                <ul className="space-y-3 md:max-h-48 md:overflow-y-auto">
                   {exp.bullets.map((bullet, j) => (
                     <li key={j} className="flex gap-3 text-neutral-600 text-sm leading-relaxed">
                       <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-neutral-300 shrink-0" />
@@ -191,7 +191,7 @@ const Education = () => {
 
   return (
     <section id="education" className="py-16 md:py-28 bg-white border-t border-neutral-100 overflow-hidden">
-      <div className="container mx-auto  md:px-12">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
 
         {/* Section label */}
         <div className="flex items-center gap-3 mb-4">
@@ -304,7 +304,7 @@ const Contact = () => {
 
   return (
     <section id="contact" className="py-16 md:py-28 bg-neutral-50 border-t border-neutral-100 overflow-hidden">
-      <div className="container mx-auto  md:px-12">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
 
         {/* Section label */}
         <div className="flex items-center gap-3 mb-4">

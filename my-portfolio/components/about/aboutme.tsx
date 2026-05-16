@@ -57,7 +57,7 @@ const Aboutme = () => {
 
   return (
     <section id="about" className="py-16 md:py-28 bg-neutral-50 border-t border-neutral-100 overflow-hidden">
-      <div className=" mx-auto px-6 md:px-12 lg:px-20">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
 
         {/* Section label */}
         <div className="flex items-center gap-3 mb-4">
