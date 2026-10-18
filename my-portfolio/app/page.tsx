@@ -163,7 +163,7 @@ export default function Page() {
       <div className="hero-copy">
         <p className="eyebrow">Software engineer &mdash; MERN stack &mdash; Next.js &mdash; Lahore, Pakistan</p>
         <h1>Muhammad Umair Mumtaz.</h1>
-        <p className="lede">I&apos;m a Full Stack Developer from Pakistan building modern web applications with React, Next.js, TypeScript, Node.js and Python. From interface to API to database, I take features through to production.</p>
+        <p className="lede">I&apos;m a Full-Stack Developer based in Pakistan, building modern web applications with React, Next.js, TypeScript, Node.js, and Python. From interface to API to database, I take features all the way to production.</p>
         <div className="cta">
           <a className="btn red" href="#contact">Get in touch</a>
           <a className="btn" href="#portfolio">View my work</a>
